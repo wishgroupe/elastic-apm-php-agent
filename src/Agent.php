@@ -44,28 +44,28 @@ class Agent
      *
      * @var \PhilKra\Helper\Config
      */
-    private $config;
+    protected $config;
 
     /**
      * Transactions Store
      *
      * @var \PhilKra\Stores\TransactionsStore
      */
-    private $transactionsStore;
+    protected $transactionsStore;
 
     /**
      * Apm Timer
      *
      * @var \PhilKra\Helper\Timer
      */
-    private $timer;
+    protected $timer;
 
     /**
      * Common/Shared Contexts for Errors and Transactions
      *
      * @var array
      */
-    private $sharedContext = [
+    protected $sharedContext = [
       'user'   => [],
       'custom' => [],
       'tags'   => []
@@ -74,12 +74,12 @@ class Agent
     /**
      * @var EventFactoryInterface
      */
-    private $eventFactory;
+    protected $eventFactory;
 
     /**
      * @var Connector
      */
-    private $connector;
+    protected $connector;
 
     /**
      * Setup the APM Agent
