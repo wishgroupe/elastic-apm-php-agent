@@ -271,7 +271,6 @@ class EventBean
                 'remote_address' => $remote_address,
                 'encrypted'      => isset($_SERVER['HTTPS'])
             ],
-            'response' => $this->contexts['response'],
             'url'          => [
                 'protocol' => $http_or_https,
                 'hostname' => Encoding::keywordField($_SERVER['SERVER_NAME'] ?? ''),
@@ -389,13 +388,17 @@ class EventBean
             $context['user'] = $this->contexts['user'];
         }
 
+        // Add response Context
+        if (empty($this->contexts['response']) === false) {
+            $context['response'] = $this->contexts['response'];
+        }
+
         // Add Custom Context
         if (empty($this->contexts['custom']) === false) {
             $context['custom'] = $this->contexts['custom'];
         }
 
-        // Add Tags Context
-        if (empty($this->contexts['tags']) === false) {
+        if(empty($this->contexts['tags']) === false) {
             $context['tags'] = $this->contexts['tags'];
         }
 

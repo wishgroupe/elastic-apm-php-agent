@@ -151,7 +151,7 @@ class Transaction extends TraceableEvent implements \JsonSerializable
                     'started' => 0,
                     'dropped' => 0,
                 ],
-            ]
+            ],
         ];
     }
 }
