@@ -30,7 +30,7 @@ class Agent
      *
      * @var string
      */
-    const VERSION = '7.0.1';
+    const VERSION = '7.0.2';
 
     /**
      * Agent Name
@@ -52,13 +52,6 @@ class Agent
      * @var \PhilKra\Stores\TransactionsStore
      */
     protected $transactionsStore;
-
-    /**
-     * Apm Timer
-     *
-     * @var \PhilKra\Helper\Timer
-     */
-    protected $timer;
 
     /**
      * Common/Shared Contexts for Errors and Transactions
@@ -116,10 +109,6 @@ class Agent
         // Init the Transport "Layer"
         $this->connector = new Connector($this->config);
         $this->connector->putEvent(new Metadata([], $this->config));
-
-        // Start Global Agent Timer
-        $this->timer = new Timer();
-        $this->timer->start();
     }
 
     /**

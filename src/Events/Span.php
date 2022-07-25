@@ -57,17 +57,23 @@ class Span extends TraceableEvent implements \JsonSerializable
      */
     private $stacktrace = [];
 
+    /**
+     * @var bool
+     */
     private $sync = true;
 
     /**
      * @param string $name
      * @param EventBean $parent
      */
-    public function __construct(string $name, EventBean $parent)
+    public function __construct(string $name, EventBean $parent, $start = null)
     {
         parent::__construct([]);
         $this->name  = trim($name);
-        $this->timer = new Timer();
+        $this->timer = new Timer($start);
+        if($start) {
+            $this->setTimestamp(round($start * 1000000));
+        }
         $this->setParent($parent);
     }
 

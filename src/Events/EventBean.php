@@ -43,9 +43,9 @@ class EventBean
     private $parentId = null;
 
     /**
-     * Error occurred on Timestamp
+     * Event occurred on Timestamp in µs
      *
-     * @var float
+     * @var int
      */
     private $timestamp;
 
@@ -94,7 +94,7 @@ class EventBean
         $this->contexts = array_merge($this->contexts, $contexts);
 
         // Get current Unix timestamp with seconds
-        $this->timestamp = round(microtime(true) * 1000000);
+        $this->setTimestamp(round(microtime(true) * 1000000));
 
         // Set Parent Transaction
         if ($parent !== null) {
@@ -170,6 +170,16 @@ class EventBean
     public function getTimestamp() : int
     {
         return $this->timestamp;
+    }
+
+    /**
+     * set event timestamp in µs
+     * @param int $timestamp
+     * @return void
+     */
+    protected function setTimestamp(int $timestamp)
+    {
+        $this->timestamp = $timestamp;
     }
 
     /**

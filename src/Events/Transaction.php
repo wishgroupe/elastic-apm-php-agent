@@ -52,6 +52,9 @@ class Transaction extends TraceableEvent implements \JsonSerializable
     {
         parent::__construct($contexts);
         $this->setTransactionName($name);
+        if($start) {
+            $this->setTimestamp(round($start * 1000000));
+        }
         $this->timer = new Timer($start);
     }
 
